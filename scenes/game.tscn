@@ -2,6 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://doghmovcgeltw" path="res://graphics/map.png" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dghd7rii024ea" path="res://scenes/player.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://bx2rg78cu21y2" path="res://scenes/tree.tscn" id="3_lnu2h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uslc5"]
+size = Vector2(20, 640)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_20ovc"]
+size = Vector2(424, 20)
 
 [node name="Game" type="Node2D" unique_id=1951553316]
 
@@ -10,3 +17,32 @@ texture = ExtResource("1_uwrxv")
 
 [node name="Player" parent="." unique_id=575306233 instance=ExtResource("2_yqjtg")]
 position = Vector2(-174, 142)
+
+[node name="Tree" parent="." unique_id=241586251 instance=ExtResource("3_lnu2h")]
+position = Vector2(-63, 213)
+
+[node name="WorldBounds" type="Node2D" parent="." unique_id=350925007]
+
+[node name="WorldBounds_Left" type="StaticBody2D" parent="WorldBounds" unique_id=134227525]
+position = Vector2(-202, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBounds/WorldBounds_Left" unique_id=658950466]
+shape = SubResource("RectangleShape2D_uslc5")
+
+[node name="WorldBounds_Right" type="StaticBody2D" parent="WorldBounds" unique_id=1163039362]
+position = Vector2(202, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBounds/WorldBounds_Right" unique_id=1790524203]
+shape = SubResource("RectangleShape2D_uslc5")
+
+[node name="WorldBounds_Top" type="StaticBody2D" parent="WorldBounds" unique_id=827943821]
+position = Vector2(0, -330)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBounds/WorldBounds_Top" unique_id=1962390565]
+shape = SubResource("RectangleShape2D_20ovc")
+
+[node name="WorldBounds_Bottom" type="StaticBody2D" parent="WorldBounds" unique_id=1376036572]
+position = Vector2(0, 330)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBounds/WorldBounds_Bottom" unique_id=1468247752]
+shape = SubResource("RectangleShape2D_20ovc")
